@@ -50,13 +50,26 @@
                             @foreach($sorted_gara as $row)
 
                                 @if($row->stato->id == '1')
-                                    <tr class="bg-info" style="text-align: center">
+                                    <tr class="bg-success" style="text-align: center">
                                 @elseif($row->stato->id == '2')
                                     <tr class="table-warning" style="text-align: center">
                                 @elseif($row->stato->id == '3')
                                     <tr class="table-danger" style="text-align: center">
                                 @elseif($row->stato->id == '4')
                                     <tr class="table-primary" style="text-align: center">
+                                @elseif($row->stato->id == '5')
+                                    <tr class="table-secondary" style="text-align: center">
+                                @elseif($row->stato->id == '6')
+                                    <tr class="table-success" style="text-align: center">
+                                @elseif($row->stato->id == '7')
+                                    <tr class="table-light" style="text-align: center">
+                                @elseif($row->stato->id == '8')
+                                    <tr class="bg-primary" style="text-align: center">
+                                @elseif($row->stato->id == '9')
+                                    <tr class="bg-warning" style="text-align: center">
+                                @elseif($row->stato->id == '10')
+                                    <tr class="bg-danger" style="text-align: center">
+
                                 @else
                                     <tr style="text-align: center" class="table-info">
                                         @endif
