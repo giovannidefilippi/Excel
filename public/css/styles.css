@@ -2084,6 +2084,40 @@ progress {
   border-color: #e6dbb9;
 }
 
+
+.gara_inserita
+{
+    background-color: #bebebf!important;
+}
+
+.gara_attesa_uscita
+{
+    background-color: #d63384!important;
+    color: white;
+}
+.gara_attesa_uscita .btn
+{
+    color: white;
+    border-color: white;
+}
+
+.gara_revocata
+{
+    background-color: #842029!important;
+    color: white;
+}
+.gara_revocata .btn
+{
+    color: white;
+    border-color: white;
+}
+
+.gara_scartata .btn
+{
+    color: white;
+    border-color: white;
+}
+
 .table-danger {
   --bs-table-bg: #f8d7da;
   --bs-table-striped-bg: #eccccf;
