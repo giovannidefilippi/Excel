@@ -2093,7 +2093,7 @@ progress {
 .gara_attesa_uscita
 {
     background-color: #d63384!important;
-    color: white;
+    color: white!important;
 }
 .gara_attesa_uscita .btn
 {
@@ -2110,6 +2110,11 @@ progress {
 {
     color: white;
     border-color: white;
+}
+
+.gara_scartata
+{
+    color: white!important;
 }
 
 .gara_scartata .btn
