@@ -27,7 +27,7 @@ class HomeController extends Controller
         $gara=Gara::all();
         $operatore=Operatore::all();
         $stato=Stato::all();
-        $sorted_gara=$gara->sortBy('datapubblicazione');
+        $sorted_gara=$gara->sortBy('datascadenza');
         /*$sorted_gara=$gara->sortBy(function ($gara,$key){
             return $gara['rdo'].$gara['bando'];
         });*/

@@ -2084,7 +2084,10 @@ progress {
   border-color: #e6dbb9;
 }
 
-
+#gare td
+{
+    border-right: #41464b 1px solid;
+}
 .gara_inserita
 {
     background-color: #bebebf!important;
@@ -2092,7 +2095,7 @@ progress {
 
 .gara_attesa_uscita
 {
-    background-color: #d63384!important;
+    background-color: #ffc720!important;
     color: white!important;
 }
 .gara_attesa_uscita .btn
