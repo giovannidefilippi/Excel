@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Imports\GaraImport;
 use App\Models\Gara;
-use App\Models\Operatore;
 use App\Models\Stato;
 use ErrorException;
 use Illuminate\Contracts\Foundation\Application;
@@ -12,6 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -24,15 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $gara=Gara::all();
-        $operatore=Operatore::all();
+        $gara=Gara::all()->sortBy('datascadenzatotime');
         $stato=Stato::all();
-        $sorted_gara=$gara->sortBy('datapubblicazione');
-        /*$sorted_gara=$gara->sortBy(function ($gara,$key){
-            return $gara['rdo'].$gara['bando'];
-        });*/
-
-        return view('index',compact('sorted_gara','operatore','stato'));
+        $tipo="Tutte le Gare";
+        return view('index',compact('gara','stato','tipo'));
     }
 
     /**
@@ -42,7 +37,8 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        $path=public_path()."/prova";
+        Storage::makeDirectory($path,0777,true,true);
     }
 
     /**

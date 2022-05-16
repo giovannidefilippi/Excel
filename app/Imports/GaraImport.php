@@ -3,7 +3,11 @@
 namespace App\Imports;
 
 use App\Models\Gara;
+use DateTime;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
@@ -16,16 +20,21 @@ class GaraImport implements ToModel,WithHeadingRow,WithUpserts
     /**
     * @param array $row
     *
-    * @return Model|null
+    * @return Model|void|null
     */
     public function model(array $row)
     {
-        //$id=$row['Numero RdO']. $row['Numero Lotto'];
-        if($row['Bando']=="BENI/Informatica, Elettronica, Telecomunicazioni e Macchine per Ufficio" || $row['Bando']=="SERVIZI/Servizi per l'Information & Communication Technology")
 
+        $dataitaliana=$row['Data e ora termine ultimo presentazione offerte'];
+        $formato="d/m/Y H:i:s";
+        $data=DateTime::createFromFormat($formato,$dataitaliana);
+        $iso=$data->format(DateTimeInterface::ATOM);
+
+        if($row['Bando']=="BENI/Informatica, Elettronica, Telecomunicazioni e Macchine per Ufficio" || $row['Bando']=="SERVIZI/Servizi per l'Information & Communication Technology")
+        {
+            /*$path=public_path().'/gare/'.$row['Numero RdO'].$row['Numero Lotto'];
+            Storage::makeDirectory($path,0777,true,true);*/
             return new Gara([
-            //'id' =>$row['Numero RdO'].$row['Numero Lotto'],
-            //'id'=>'10',
             'rdoelotto' => $row['Numero RdO'].$row['Numero Lotto'],
             'rdo'        => $row['Numero RdO'],
             'denominazioneiniziativa'      => $row['Denominazione iniziativa'],
@@ -41,16 +50,16 @@ class GaraImport implements ToModel,WithHeadingRow,WithUpserts
             'dataterminechiarimenti'       => $row['Data e ora termine ultimo richiesta chiarimenti'],
             'giornidiconsegna'       => $row['Giorni dopo la stipula per Consegna Beni / Decorrenza Servizi'],
             'criterioaggiudicazione'       => $row['Criterio di aggiudicazione'],
-            /*'stato_id' =>1,
-            'operatore_id' =>1,
-            'fidejussione_id'=>1,*/
+            'datascadenzatotime' =>strtotime($iso),
             //sono i campi che importa nel db dal file
         ]);
+        }
+        else
+            return ;
         }
 
     public function uniqueBy(): string
     {
-       //return ['rdo','lotto'];
-        return 'rdo';
+       return 'rdoelotto';
     }
 }

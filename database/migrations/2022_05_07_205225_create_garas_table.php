@@ -16,34 +16,35 @@ class CreateGarasTable extends Migration
         Schema::create('garas', function (Blueprint $table) {
             $table->id();
             $table->string('rdo');
-            $table->string('rdoelotto');
-            $table->string('denominazioneiniziativa');
-            $table->string('amministrazione');
-            $table->string('regione');
-            $table->string('referente');
-            $table->string('bando');
-            $table->string('telefono');
+            $table->string('rdoelotto')->unique();
+            $table->longText('denominazioneiniziativa')->nullable();
+            $table->string('amministrazione')->nullable();
+            $table->string('regione')->nullable();
+            $table->string('referente')->nullable();
+            $table->string('bando')->nullable();
+            $table->string('telefono')->nullable();
             $table->integer('lotto');
-            $table->double('basedasta');
-            $table->string('datapubblicazione');
-            $table->string('datascadenza');
-            $table->string('dataterminechiarimenti');
-            $table->integer('giornidiconsegna');
-            $table->string('criterioaggiudicazione');
-            $table->string('note');
-            $table->string('percorsocartella');
-            $table->double('quotazione');
-            $table->double('offerta');
-            $table->unsignedBigInteger('stato_id');
+            $table->double('basedasta')->nullable();
+            $table->string('datapubblicazione')->nullable();
+            $table->string('datascadenza')->nullable();
+            $table->string('dataterminechiarimenti')->nullable();
+            $table->string('giornidiconsegna')->nullable();
+            $table->string('criterioaggiudicazione')->nullable();
+            $table->string('note')->nullable();
+            $table->string('percorsocartella')->nullable();
+            $table->double('quotazione')->nullable();
+            $table->double('offerta')->nullable();
+            $table->unsignedBigInteger('stato_id')->default(1);
             // chiave esterna su stato
             $table->foreign('stato_id')->references('id')->on('statos');
-            $table->unsignedBigInteger('operatore_id');
+            $table->unsignedBigInteger('operatore_id')->default(1);
             // chiave esterna su operatore
             $table->foreign('operatore_id')->references('id')->on('operatores');
-            $table->unsignedBigInteger('fidejussione_id');
+            $table->unsignedBigInteger('fidejussione_id')->default(1);
             // chiave esterna su fidejussione
             $table->foreign('fidejussione_id')->references('id')->on('fidejussiones');
             $table->timestamps();
+            $table->integer('datascadenzatotime')->nullable();
         });
     }
 

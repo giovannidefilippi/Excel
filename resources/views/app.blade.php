@@ -22,15 +22,24 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{route('gare.create')}}">Nuova Gara</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('importazione')}}">Importa Gare</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Seleziona per Stato</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="{{route('nuovaGara')}}">Nuova Gara</a></li>
+                                <li><a class="dropdown-item" href="{{route('inValutazione')}}">In Valutazione</a></li>
+                                <li><a class="dropdown-item" href="{{route('richiestaChiarimenti')}}">Richiesta chiarimenti</a></li>
+                                <li><a class="dropdown-item" href="{{route('richiestaQuotazione')}}">Richiesta Quotazione</a></li>
+                                <li><a class="dropdown-item" href="{{route('quotazioneRicevuta')}}">Quotazione Ricevuta</a></li>
+                                <li><a class="dropdown-item" href="{{route('attesaPrezzoUscita')}}">Attesa Prezzo Uscita</a></li>
+                                <li><a class="dropdown-item" href="{{route('daPartecipare')}}">Da partecipare</a></li>
+                                <li><a class="dropdown-item" href="{{route('partecipata')}}">Partecipata</a></li>
+                                <li><a class="dropdown-item" href="{{route('revocata')}}">Revocata</a></li>
+                                <li><a class="dropdown-item" href="{{route('scartata')}}">Scartata</a></li>
+                                <li><a class="dropdown-item" href="{{route('eliminata')}}">Eliminata</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="{{route('home')}}">Tutte le Gare</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -40,11 +49,7 @@
         <!-- Page content-->
         <div>
 
-           {{--<div class="text-center mt-5">
-                <h1>A Bootstrap 5 Starter Template</h1>
-                <p class="lead">A complete project boilerplate built with Bootstrap</p>
-                <p>Bootstrap v5.1.3</p>
-            </div>--}}
+
             <div class="container-fluid">
                 <div class="row">
 

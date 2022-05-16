@@ -2,55 +2,37 @@
 
     @section('content')
                 <div class="panel-heading">
-                    <table class="table">
-                        <tr class="" >
-                            <td class="">
-                                <form action="">
-                                    <label for="operatoreSelezionato">Seleziona Operatore</label>
-                                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="operatoreSelezionato" id="operatoreSelezionato" style="width:350px ">
-                                @foreach ($operatore as $item)
-                                    <option value="{{ $item->id }}"> {{ $item->nome }} {{$item->cognome}}</option>
-                                @endforeach    </select>
-
-                            <input type="submit" class="btn btn-outline-success" value="Visualizza per Operatore">
-
-                                </form>
-                            </td>
-
-                            <td class="" style="text-align:right;">
-                            <a class="btn btn-success btn-lg" href="{{route('importazione')}}" role="button" style="margin-top:45px;margin-right:25px;">Importa Gare</a>
-                            </td>
-                     </tr>
-                    </table>
-                   {{-- <h3 class="panel-heading text-center" style="margin-top: 50px;"> Elenco Gare </h3>--}}
-
+                  <h3 class="panel-heading text-center" style="margin-top: 50px;"> {{$tipo}}</h3>
+                    <br>
                 </div>
                 <div class="panel-body">
-
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
 
-                            <tr class="table-success text-center" >
+
+                                <tr class="table-success text-center">
                                 <th> RDO</th>
                                 <th> Lotto</th>
                                 <th> Data Pubblicazione</th>
                                 <th> Scadenza</th>
                                 <th> Denominazione iniziativa</th>
-                                <th> Importo totale a base d'asta lotto</th>
+                                <th> Base d'asta</th>
                                 <th> Quotazione</th>
                                 <th> Offerta</th>
                                 <th> Stato gara</th>
                                 <th> Amministrazione</th>
+                                <th> Area lavoro</th>
+                                <th> </th>
 
 
 
 
 
                             </tr>
-                            @foreach($sorted_gara as $row)
 
+                            @foreach($gara as $row)
                                 @if($row->stato->id == '1')
-                                    <tr class="bg-success" style="text-align: center">
+                                    <tr class="table-info" style="text-align: center">
                                 @elseif($row->stato->id == '2')
                                     <tr class="table-warning" style="text-align: center">
                                 @elseif($row->stato->id == '3')
@@ -69,12 +51,14 @@
                                     <tr class="bg-warning" style="text-align: center">
                                 @elseif($row->stato->id == '10')
                                     <tr class="bg-danger" style="text-align: center">
-
+                                @elseif($row->stato->id == '11')
+                                    <tr class="bg-danger" style="text-align: center">
                                 @else
                                     <tr style="text-align: center" class="table-info">
                                         @endif
 
-                                        <td>{{$row->rdo}}</td>
+
+                                        <td>{{$row->rdo}} <a class="btn btn-sm btn-info" href="{{route('gare.show',$row->id)}}"> Dettagli </a></td>
                                         <td>{{$row->lotto}}</td>
                                         <td>{{$row->datapubblicazione}}</td>
                                         <td>{{$row->datascadenza}}</td>
@@ -89,7 +73,7 @@
                                     <td>
 
 
-                                            <form action="{{route('gara.update',$row->id)}}" method="POST" enctype="multipart/form-data" >
+                                            <form action="{{route('gare.update',$row->id)}}" method="POST" enctype="multipart/form-data" >
                                                 @method('PUT')
                                                 @csrf
                                                 <select class="form-select form-select-sm" aria-label=".form-select-lg example" name="stato" id="stato" style="width:180px;text-align: center;background-color: #a6dec7">
@@ -99,17 +83,31 @@
                                                         <option value="{{ $item->id }}" > {{ $item->stato }} </option>
                                                         @endif
                                                     @endforeach    </select>
-                                                <br>
-                                                <input type="submit" class="btn btn-outline-primary" value="Cambia Stato" style="margin-top: 10%">
+
+                                                <input type="submit" class="btn btn-sm btn-outline-primary" value="Cambia Stato" style="margin-top: 10%">
                                             </form>
 
                                     </td>
                                         <td>{{$row->amministrazione}}</td>
+                                        <td>
+                                            @if($row->percorsocartella)
+                                            <a class="btn btn-sm btn-outline-warning" href="{{route('apriCartella',$row->percorsocartella)}}">Apri Cartella </a>
 
+                                            @else
+                                            <a class="btn btn-sm btn-outline-info" href="{{route('creaCartella',[$row->rdo.$row->lotto,$row->id])}}">Crea Cartella </a>
 
-
-
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-outline-primary" href="{{route('gare.edit',$row->id)}}" style="margin-bottom: 2px">Modifica</a>
+                                            <form action="{{route('gare.destroy',$row->id)}}" method="POST" style="display:inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <input type="submit" value="Elimina" class="btn btn-outline-danger" onclick="return confirm('Sei sicuro ? La gara verrà definitivamente eliminata')"/>
+                                            </form>
+                                        </td>
                                 </tr>
+
 
                                     @endforeach
 

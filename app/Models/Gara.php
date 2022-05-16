@@ -13,7 +13,7 @@ class Gara extends Model
     protected $fillable = ['rdo','denominazioneiniziativa','amministrazione',
         'regione','referente','telefono','bando','lotto','basedasta','datapubblicazione',
         'datascadenza','dataterminechiarimenti','giornidiconsegna','criterioaggiudicazione',
-        'stato_id','operatore_id','fidejussione_id','quotazione','offerta','note','percorsocartella','rdoelotto'];
+        'stato_id','operatore_id','fidejussione_id','quotazione','offerta','note','percorsocartella','rdoelotto','datascadenzatotime'];
     public function operatore(): BelongsTo
     {
         return $this->belongsTo(Operatore::class);

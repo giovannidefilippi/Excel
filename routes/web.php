@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GaraController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +19,23 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 
 Route::get('/importazione',
     function () {
-        //$idMax = Pratica::max('id');
-        //$data = Pratica::where('praticas.id', '>', session('idMax'))->get();
-
         return view('importazione');
     })->name('importazione');
 Route::post('/import',[HomeController::class,'import'])->name('gara.import');
 
-Route::resource('gara', 'GaraController');
+Route::resource('gare', 'GaraController');
+
+Route::get('/NuoveGare', [GaraController::class,'nuovaGara'])->name('nuovaGara');
+Route::get('/InValutazione', [GaraController::class,'inValutazione'])->name('inValutazione');
+Route::get('/RichiestaChiarimenti', [GaraController::class,'richiestaChiarimenti'])->name('richiestaChiarimenti');
+Route::get('/RichiestaQuotazione', [GaraController::class,'richiestaQuotazione'])->name('richiestaQuotazione');
+Route::get('/QuotazioneRicevuta', [GaraController::class,'quotazioneRicevuta'])->name('quotazioneRicevuta');
+Route::get('/AttesaPrezzoUscita', [GaraController::class,'attesaPrezzoUscita'])->name('attesaPrezzoUscita');
+Route::get('/DaPartecipare', [GaraController::class,'daPartecipare'])->name('daPartecipare');
+Route::get('/Partecipata', [GaraController::class,'partecipata'])->name('partecipata');
+Route::get('/Revocata', [GaraController::class,'revocata'])->name('revocata');
+Route::get('/Scartata', [GaraController::class,'scartata'])->name('scartata');
+Route::get('/Eliminata', [GaraController::class,'eliminata'])->name('eliminata');
+
+Route::get('/CreaCartella/{rdoelotto}/{id}/', [GaraController::class,'creaCartella'])->name('creaCartella');
+Route::get('/ApriCartella/{percorsocartella}', [GaraController::class,'apriCartella'])->name('apriCartella');

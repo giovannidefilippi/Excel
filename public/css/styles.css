@@ -11312,3 +11312,11 @@ textarea.form-control-lg {
 ul {
     list-style-type: none;
 }
+
+#TitoloInLinea{
+  font-family: verdana;
+  font-size: 150%;
+  margin-left: 150px;
+  margin-right: 150px;
+  text-align: center;
+}
