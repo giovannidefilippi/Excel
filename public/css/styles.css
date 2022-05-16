@@ -2084,6 +2084,48 @@ progress {
   border-color: #e6dbb9;
 }
 
+#gare td
+{
+    border-right: #41464b 1px solid;
+}
+.gara_inserita
+{
+    background-color: #bebebf!important;
+}
+
+.gara_attesa_uscita
+{
+    background-color: #ffc720!important;
+    color: white!important;
+}
+.gara_attesa_uscita .btn
+{
+    color: white;
+    border-color: white;
+}
+
+.gara_revocata
+{
+    background-color: #842029!important;
+    color: white;
+}
+.gara_revocata .btn
+{
+    color: white;
+    border-color: white;
+}
+
+.gara_scartata
+{
+    color: white!important;
+}
+
+.gara_scartata .btn
+{
+    color: white;
+    border-color: white;
+}
+
 .table-danger {
   --bs-table-bg: #f8d7da;
   --bs-table-striped-bg: #eccccf;
