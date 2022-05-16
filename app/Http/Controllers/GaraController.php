@@ -114,7 +114,8 @@ class GaraController extends Controller
             $gara->update([
                 'note' =>$request->note,
                 'quotazione' =>$request->quotazione,
-                'offerta' =>$request->offerta
+                'offerta' =>$request->offerta,
+
 
             ]);
 
