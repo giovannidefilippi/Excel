@@ -7,11 +7,12 @@ use App\Http\Requests\UpdateGaraRequest;
 use App\Models\Gara;
 use App\Models\Stato;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Scalar\String_;
 
 class GaraController extends Controller
 {
@@ -20,7 +21,7 @@ class GaraController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //
     }
@@ -28,7 +29,7 @@ class GaraController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
@@ -38,10 +39,10 @@ class GaraController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param StoreGaraRequest $request
+     * @return RedirectResponse
      */
-    public function store(StoreGaraRequest $request)
+    public function store(StoreGaraRequest $request): RedirectResponse
     {
         Gara::create([
             'rdo' =>$request->rdo,
@@ -72,9 +73,9 @@ class GaraController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         $gara = Gara::findOrFail($id);
         return view('show',compact('gara'));
@@ -84,9 +85,9 @@ class GaraController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $gara = Gara::findOrFail($id);
         return view('edit',compact('gara'));
@@ -95,8 +96,8 @@ class GaraController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
+     * @param UpdateGaraRequest $request
+     * @param int $id
      * @return RedirectResponse|Response
      */
     public function update(UpdateGaraRequest $request, int $id)
@@ -126,9 +127,9 @@ class GaraController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         $gara = Gara::findOrFail($id);
         $gara->delete();
@@ -137,6 +138,12 @@ class GaraController extends Controller
         return back()->withInput();
     }
 
+    /**
+     * Serie di funzioni che restituiscono le gare con lo stato selezionato.
+     *
+     * @param
+     * @return Application|Factory|View|RedirectResponse
+     */
     public function nuovaGara(){
         $gara=Gara::where('stato_id',1)->with('stato')->orderBy('datascadenzatotime','ASC')->get();
         $stato=Stato::all();
@@ -216,7 +223,16 @@ class GaraController extends Controller
         return view('index',compact('gara','stato','tipo'));
     }
 
-    public function creaCartella($rdoelotto,$id){
+    /**
+     * Crea una directory per la gara .
+     *
+     * @param int $rdoelotto
+     * @param int $id
+     * @return RedirectResponse
+     */
+
+    public function creaCartella(int $rdoelotto,int $id): RedirectResponse
+    {
 
         $path="\RDO".$rdoelotto;
         Storage::makeDirectory($path);
