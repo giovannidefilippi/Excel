@@ -2084,19 +2084,19 @@ progress {
   border-color: #e6dbb9;
 }
 
-#gare td
+/*#gare td
 {
-    border-right: #41464b 1px solid;
-}
+    border: #41464b 1px solid;
+}*/
 .gara_inserita
 {
-    background-color: #bebebf!important;
+    background-color: #bdf1f6!important;
+
 }
 
 .gara_attesa_uscita
 {
     background-color: #ffc720!important;
-    color: white!important;
 }
 .gara_attesa_uscita .btn
 {
@@ -11353,6 +11353,35 @@ textarea.form-control-lg {
 
 ul {
     list-style-type: none;
+}
+
+li .menu_partecipare
+{
+    background-color: #ffc720;
+    color: #fff;
+}
+
+li .menu_partecipata
+{
+    background-color: #32CD32;
+    color: #fff;
+}
+
+li .menu_scartata
+{
+    background-color: #FF4500;
+    color: #fff;
+}
+
+li .menu_eliminata
+{
+    background-color: #FF0000;
+    color: #fff;
+}
+
+li .menu_inserita
+{
+    background-color: #bdf1f6;
 }
 
 #TitoloInLinea{

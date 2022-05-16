@@ -18,11 +18,12 @@ class CreateQuotazionesTable extends Migration
             $table->unsignedBigInteger('gara_id');
             // chiave esterna su gara
             $table->foreign('gara_id')->references('id')->on('garas');
+            $table->string('datarichiesta')->nullable();
             $table->string('fornitore');
-            $table->double('valore');
-            $table->string('note');
-            $table->string('filecaricato');
-            $table->dateTime('dataricezione');
+            $table->double('valore')->nullable();
+            $table->string('note')->nullable();
+            $table->string('filecaricato')->nullable();
+            $table->string('dataricezione')->nullable();
             $table->timestamps();
         });
     }

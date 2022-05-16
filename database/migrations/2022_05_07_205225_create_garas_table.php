@@ -30,7 +30,6 @@ class CreateGarasTable extends Migration
             $table->string('dataterminechiarimenti')->nullable();
             $table->string('giornidiconsegna')->nullable();
             $table->string('criterioaggiudicazione')->nullable();
-            $table->string('note')->nullable();
             $table->string('percorsocartella')->nullable();
             $table->double('quotazione')->nullable();
             $table->double('offerta')->nullable();

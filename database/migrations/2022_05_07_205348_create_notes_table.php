@@ -19,6 +19,7 @@ class CreateNotesTable extends Migration
             $table->unsignedBigInteger('gara_id');
             // chiave esterna su gara
             $table->foreign('gara_id')->references('id')->on('garas');
+            $table->string('datainserimento')->nullable();
             $table->timestamps();
         });
     }
