@@ -24,6 +24,7 @@ Route::get('/importazione',
 Route::post('/import',[HomeController::class,'import'])->name('gara.import');
 
 Route::resource('gare', 'GaraController');
+Route::resource('note', 'NotaController');
 
 Route::get('/NuoveGare', [GaraController::class,'nuovaGara'])->name('nuovaGara');
 Route::get('/InValutazione', [GaraController::class,'inValutazione'])->name('inValutazione');

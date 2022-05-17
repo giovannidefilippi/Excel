@@ -103,11 +103,6 @@
             <input type="text" name="criterioaggiudicazione" value="{{$gara->criterioaggiudicazione}}" class="form-control" readonly/>
             <br>
 
-            <b>Note :</b>
-            <br>
-            <textarea type="text" name="note"  class="form-control">{{$gara->note}}</textarea>
-            <br>
-
             <b>Quotazione :</b>
             <br>
             <input type="text" name="quotazione" value="{{$gara->quotazione}}" class="form-control"/>
@@ -123,8 +118,44 @@
                 <input type="submit" class="btn btn-primary btn-lg" value="Salva Modifiche">
             </div>
         </form>
+
         <br>
     </div>
+    <table class="table table-bordered table-striped" id="gare">
+        <thead class="thead-dark">
+
+
+        <tr class="table-success text-center">
+            <th style="width: 5%">Info</th>
+            <th style="width: 5%">Testo</th>
+            <th style="width: 10%">Data</th>
+            <th style="width: 10%"></th>
+
+
+        </tr>
+        </thead>
+
+        @foreach($note as $row)
+                <tr style="text-align: center" class="table-info">
+
+
+                    <td><a href="{{route('note.edit',$row->id)}}"><img src="{{ asset('info.svg') }}" alt="info" width="32px"></a></td>
+                    <td>{{$row->testo}}</td>
+                    <td>{{$row->datainserimento}}</td>
+                    <td>
+
+                        <form action="{{route('note.destroy',$row->id)}}" method="POST" style="display:inline">
+                            @method('DELETE')
+                            @csrf
+                            <input style="margin-top: 10px; width: 100%" type="submit" value="Elimina" class="btn btn-danger" onclick="return confirm('Sei sicuro? La nota verrà eliminata dal database')"/>
+                        </form>
+                    </td>
+                </tr>
+
+
+                @endforeach
+
+    </table>
 
 @endsection
 

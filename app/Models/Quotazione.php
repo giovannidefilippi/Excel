@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Quotazione extends Model
 {
     use HasFactory;
-    protected $fillable = ['gara_id','fornitore','valore','dataricezione','note','filecaricato'];
+    protected $fillable = ['gara_id','fornitore','valore','dataricezione','note','filecaricato','datarichiesta'];
     use HasFactory;
     public function gara(): BelongsTo
     {

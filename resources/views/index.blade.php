@@ -22,7 +22,7 @@
                     <th style="width: 10%"> Quotazione</th>
                     <th style="width: 10%"> Offerta</th>
                     <th style="width: 10%"> Amministrazione</th>
-                    <th style="width: 10%"> Funzioni</th>
+                    <th style="width: 10%"> </th>
 
 
                 </tr>
