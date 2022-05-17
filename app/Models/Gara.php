@@ -35,7 +35,7 @@ class Gara extends Model
     public function note(): HasMany
     {
         return
-            $this->hasMany(Note::class);
+            $this->hasMany(Nota::class);
     }
     public function quotazione(): HasMany
     {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreGaraRequest;
 use App\Http\Requests\UpdateGaraRequest;
 use App\Models\Gara;
-use App\Models\Note;
+use App\Models\Nota;
 use App\Models\Stato;
 
 use Illuminate\Contracts\Foundation\Application;
@@ -91,8 +91,8 @@ class GaraController extends Controller
     public function edit(int $id)
     {
         $gara = Gara::findOrFail($id);
-        $note = Note::where('gara_id',$id)->with('gara')->orderBy('id','ASC')->get();
-        return view('edit',compact('gara','note'));
+
+        return view('edit',compact('gara'));
     }
 
     /**

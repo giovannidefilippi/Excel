@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static where(string $string, int $id)
+ * @method static create(array $array)
  */
-class Note extends Model
+class Nota extends Model
 {
     protected $fillable = ['gara_id','testo','datainserimento'];
     use HasFactory;

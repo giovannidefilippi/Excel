@@ -8,6 +8,13 @@
                     <td><span id="TitoloInLinea" >Modifica Gara</span>
                     </td>
                     <td>
+                        <a class="btn btn-outline-warning btn-lg" href="{{route('note.show',$gara->id)}}" role="button">Note</a>
+
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-success btn-lg" href="{{route('quotazioni.index')}}" role="button">Quotazioni</a>
+                    </td>
+                    <td>
                 <span style="margin-left: 350px;">
                     <form action="{{route('home')}}" method="GET" style="display:inline">
                     @csrf
@@ -121,41 +128,6 @@
 
         <br>
     </div>
-    <table class="table table-bordered table-striped" id="gare">
-        <thead class="thead-dark">
-
-
-        <tr class="table-success text-center">
-            <th style="width: 5%">Info</th>
-            <th style="width: 5%">Testo</th>
-            <th style="width: 10%">Data</th>
-            <th style="width: 10%"></th>
-
-
-        </tr>
-        </thead>
-
-        @foreach($note as $row)
-                <tr style="text-align: center" class="table-info">
-
-
-                    <td><a href="{{route('note.edit',$row->id)}}"><img src="{{ asset('info.svg') }}" alt="info" width="32px"></a></td>
-                    <td>{{$row->testo}}</td>
-                    <td>{{$row->datainserimento}}</td>
-                    <td>
-
-                        <form action="{{route('note.destroy',$row->id)}}" method="POST" style="display:inline">
-                            @method('DELETE')
-                            @csrf
-                            <input style="margin-top: 10px; width: 100%" type="submit" value="Elimina" class="btn btn-danger" onclick="return confirm('Sei sicuro? La nota verrà eliminata dal database')"/>
-                        </form>
-                    </td>
-                </tr>
-
-
-                @endforeach
-
-    </table>
 
 @endsection
 

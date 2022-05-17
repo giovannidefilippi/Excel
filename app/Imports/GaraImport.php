@@ -32,9 +32,7 @@ class GaraImport implements ToModel,WithHeadingRow,WithUpserts
 
         if($row['Bando']=="BENI/Informatica, Elettronica, Telecomunicazioni e Macchine per Ufficio" || $row['Bando']=="SERVIZI/Servizi per l'Information & Communication Technology")
         {
-            /*$path=public_path().'/gare/'.$row['Numero RdO'].$row['Numero Lotto'];
-            Storage::makeDirectory($path,0777,true,true);*/
-            return new Gara([
+           return new Gara([
             'rdoelotto' => $row['Numero RdO'].$row['Numero Lotto'],
             'rdo'        => $row['Numero RdO'],
             'denominazioneiniziativa'      => $row['Denominazione iniziativa'],
