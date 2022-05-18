@@ -8,18 +8,18 @@
                     <td><span id="TitoloInLinea" >Modifica Gara</span>
                     </td>
                     <td>
-                        <a class="btn btn-outline-warning btn-lg" href="{{route('note.show',$gara->id)}}" role="button">Note</a>
+                        <a class="btn btn-outline-warning btn-lg" href="{{route('note.show',$gara->id)}}" role="button" style="margin-right: 150px">Note</a>
 
                     </td>
                     <td>
-                        <a class="btn btn-outline-success btn-lg" href="{{route('quotazioni.index')}}" role="button">Quotazioni</a>
+                        <a class="btn btn-outline-primary btn-lg" href="{{route('quotazioni.index')}}" role="button">Quotazioni</a>
                     </td>
                     <td>
                 <span style="margin-left: 350px;">
                     <form action="{{route('home')}}" method="GET" style="display:inline">
                     @csrf
                         <input type="submit" value="Ritorna senza modifiche" class="btn btn-outline-success btn-lg" />
-                        <input type='hidden' name='cliente_id' value="{{$gara->id}}">
+                        <input type='hidden' name='gara_id' value="{{$gara->id}}">
                     </form>
                     </span>
                     </td>

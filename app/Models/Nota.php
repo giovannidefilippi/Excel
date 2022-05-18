@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @method static where(string $string, int $id)
  * @method static create(array $array)
+ * @method static findOrFail(int $id)
  */
 class Nota extends Model
 {
